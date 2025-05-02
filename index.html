@@ -5,150 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>문진웅 | 서버 개발자 경력 기술서</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
     body {
-      font-family: 'Segoe UI', sans-serif;
-      max-width: 860px;
+      font-family: 'Inter', 'Apple SD Gothic Neo', sans-serif;
+      background-color: #f9fafc;
+      color: #2a2a2a;
+      max-width: 960px;
       margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #333;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-    h1, h2, h3 {
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 0.2em;
+      color: #1a1a1a;
+    }
+    h2 {
+      font-size: 1.4em;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
       color: #222;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px;
     }
-    code {
-      background-color: #f3f3f3;
-      padding: 2px 4px;
-      border-radius: 4px;
+    h3 {
+      font-size: 1.1em;
+      color: #444;
+      margin-top: 1.5em;
     }
     hr {
       border: none;
       border-top: 1px solid #ddd;
       margin: 2em 0;
     }
+    ul {
+      padding-left: 1.5em;
+    }
+    code {
+      background-color: #f1f1f1;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .contact {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 1.5em;
+    }
+    .tag-box {
+      margin-top: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em;
+    }
+    .tag {
+      background-color: #e6f0ff;
+      color: #003366;
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.85em;
+    }
   </style>
 </head>
 <body>
-<hr />
+  <h1>문진웅 (Moon Jinwoong)</h1>
+  <div class="contact">
+    <p><strong>서버 개발자</strong> | 경력 5년 8개월</p>
+    <p>📞 +82-10-5120-2097<br>
+    📧 jazzmaster0415@gmail.com<br>
+    🔗 <a href="https://github.com" target="_blank">GitHub</a></p>
+  </div>
+  <p></p>
 
-<p>layout: default</p>
-
-<h2>title: "문진웅 | 서버 개발자 경력 기술서"</h2>
-
-<h1>문진웅 (Moon Jinwoong)</h1>
-
-<p><strong>서버 개발자</strong> | 경력 6년 11개월<br />
-📞 +82-10-5120-2097<br />
-📧 jazzmaster0415@gmail.com<br />
-🔗 <a href="https://github.com">GitHub</a> | <a href="https://linkedin.com">LinkedIn</a></p>
-
-<hr />
-
-<h2>🔧 기술 스택</h2>
-
-<ul>
-<li><strong>Language</strong>: C++, Golang, PHP  </li>
-<li><strong>DB</strong>: MySQL, Redis, MongoDB  </li>
-<li><strong>OS</strong>: Linux  </li>
-<li><strong>Etc</strong>: git, confluence, jira, boost, gin, etc...</li>
-</ul>
-
-<hr />
-
-<h2>🧩 경력 요약</h2>
-
-<p>게임 업계를 시작으로 교육, 블록체인 분야까지 다양한 산업에서 서버 개발 경험을 쌓았습니다.<br />
-새로운 기술 트렌드를 빠르게 습득하고, 시스템 안정성과 유저 경험 향상에 초점을 맞추는 개발자입니다.<br />
-대규모 서비스 경험과 스트레스 테스트, 멀티스레딩, 캐시 최적화까지 실무 능력을 보유하고 있습니다.</p>
-
-<hr />
-
-<h2>💼 주요 프로젝트 및 경험</h2>
-
-<h3>(주) 트랄라랩 | 서버 개발자 (2023.05 ~ 2025.02)</h3>
-
-<h4>🔹 서버 프레임워크 구축</h4>
-
-<ul>
-<li>handler/usecase/repository/router 구조로 서버 프레임워크 설계 및 구현</li>
-<li>모듈화된 구조 덕분에 다양한 종류의 서버 (API, Dashboard, Batch) 확장 용이</li>
-<li>공통 protocol 및 util 라이브러리 개발 → 중복 코드 제거 및 개발 공수 약 30% 절감</li>
-<li>고루틴 기반 크롤러 서버 설계로 메모리 사용 최적화 및 안정성 확보</li>
-</ul>
-
-<h4>🔹 코드 및 DB 최적화</h4>
-
-<ul>
-<li>인덱스 최적화 및 복합 인덱스 적용, 프로젝션 기반 쿼리 성능 개선</li>
-<li>Redis 캐시 도입으로 세션/핵심 데이터 조회 응답 속도 개선</li>
-<li>포인터 사용 개선 및 컨테이너 교체를 통해 메모리 안전성과 성능 확보</li>
-</ul>
-
-<h4>🔹 재사용 가능한 라이브러리 모듈</h4>
-
-<ul>
-<li>conf 설정, DB 커넥션, 공통 함수(time, string), 상수/타입, 에러 처리 모듈 구성</li>
-<li>서드파티 연동 및 프로토콜 정의를 포함한 범용 유틸리티 모음 구현</li>
-</ul>
-
-<h4>🔹 블록체인 플랫폼 및 게임 API 서버 개발</h4>
-
-<ul>
-<li>zkSync(L2) 및 Ethereum(L1) 연동 로직 구현 → 트랜잭션 처리 및 NFT/토큰 데이터 조회</li>
-<li>트랜잭션 파싱 및 DB 저장 → 빠른 응답 제공 구조 설계</li>
-<li>재시도, nonce 병목 회피 등 Tx 관리 위한 비동기 배치 서버 구축</li>
-<li>크롤링 기반 트랜잭션 완료 여부 확인 로직 구현</li>
-<li>구글 OAuth/애플 로그인 및 세션 갱신, JWT 발급</li>
-<li>업적, 퀘스트, 게임, 랭킹, 아이템 교환 등 다양한 인게임 서버 로직 개발</li>
-</ul>
-
-<hr />
-
-<h3>(주) 네오플 | 던전앤파이터 모바일 서버 개발자 (2020.02 ~ 2022.01)</h3>
-
-<h4>🔹 인게임 컨텐츠 개발</h4>
-
-<ul>
-<li>PvP 시스템 (2vs2, 3vs3), 유적지 쟁탈전, 길드 레이드 등 실시간 전투 로직 구현</li>
-<li>퀘스트 시스템 리팩토링 및 데이터 마이그레이션</li>
-<li>랭킹, 보상, 업적, 파티 시스템 포함 다양한 컨텐츠 서버 작업</li>
-</ul>
-
-<h4>🔹 GM툴 및 테스트</h4>
-
-<ul>
-<li>GM 치트 기능(레벨 세팅, 승리 조작 등) 다수 구현</li>
-<li>PR2 기준 10만 동시접속 스트레스 테스트 통과 → 병목 제거 및 캐시 도입</li>
-<li>DB 샤딩 설계, 복사 최적화, flameGraph 기반 성능 분석 수행</li>
-</ul>
-
-<hr />
-
-<h3>(주) 컴투스 | 스포츠 게임 서버 개발자 (2018.05 ~ 2020.02)</h3>
-
-<ul>
-<li>카드 조합, 뽑기, 도전과제, 클럽전 등 컨텐츠 서버 다수 개발</li>
-<li>윷놀이, 빙고, 승부예측 등 이벤트 시스템 및 홈런더비 기능 구현</li>
-<li>Redis 랭킹 처리, BigQuery 데이터 분석, 로그 시스템 개편 등 서버 및 데이터 작업</li>
-</ul>
-
-<hr />
-
-<h2>🎓 학력</h2>
-
-<ul>
-<li><strong>한국산업기술대학교 게임공학부</strong> (2014.03 ~ 2018.02)</li>
-</ul>
-
-<hr />
-
-<h2>🏷️ 스킬 태그</h2>
-
-<p><code>C++</code> <code>Golang</code> <code>PHP</code> <code>MySQL</code> <code>Redis</code> <code>MongoDB</code> <code>Linux</code> <code>Git</code> <code>Blockchain</code> <code>Multithreading</code> <code>API</code> <code>게임 서버</code> <code>성능 최적화</code> <code>OAuth</code> <code>Tx Processing</code> <code>스트레스 테스트</code> <code>컨텐츠 개발</code></p>
-
-<hr />
-
-<p><em>이 경력 기술서는 GitHub Pages용 Markdown 포맷으로 작성되었습니다.</em></p>
+  <p><em>이 경력 기술서는 GitHub Pages용 Markdown 포맷으로 작성되었습니다.</em></p>
 
 </body>
 </html>
