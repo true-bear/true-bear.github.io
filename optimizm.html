@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게임 서버 성능 개선 사례</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', 'Apple SD Gothic Neo', sans-serif;
+      background-color: #f9fafc;
+      color: #2a2a2a;
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 0.3em;
+      color: #1a1a1a;
+    }
+    h2 {
+      font-size: 1.4em;
+      margin-top: 2em;
+      color: #222;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px;
+    }
+    h3 {
+      font-size: 1.1em;
+      color: #444;
+      margin-top: 1.5em;
+    }
+    code {
+      background-color: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background-color: #f6f8fa;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0;
+    }
+    th, td {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<h1>게임 서버 성능 개선 사례</h1>
+
+<h2>🎯 목표</h2>
+
+<ul>
+<li>대규모 유저 이벤트 상황에서도 서버 응답 지연 최소화</li>
+<li>기존 인프라 구조 유지하면서 성능 개선</li>
+</ul>
+
+<hr />
+
+<h2>✅ 개선 1: 캐싱 layer 도입으로 DB 트래픽 감소</h2>
+
+<h3>🔍 문제 상황</h3>
+
+<ul>
+<li>스트레스 테스트 진행시 유저 정보(DB) 호출이 집중됨</li>
+<li>인벤토리 , 업적 등도 호출이 집중</li>
+<li>캐싱 없이 직접 MySQL로 조회 → TPS 급감, 응답 지연</li>
+</ul>
+
+<h3>⚙️ 개선 조치</h3>
+
+<ul>
+<li>인벤토리, 업적, 상태 정보 등을 Redis에 캐싱</li>
+<li>TTL 기반 자동 만료 및 주기적 갱신 구조 적용</li>
+<li>로그인 직후 한번만 DB 조회 후 이후 모든 요청은 캐시 우선</li>
+</ul>
+
+<h3>📊 Before / After</h3>
+
+<p>```
+          로그인 요청
+              ↓
+    [기존]   DB 조회 (직접)
+              ↓
+          응답 (200ms)</p>
+
+<pre><code>     ↘ 개선 ↙
+      Redis 캐시
+          ↓
+[개선]   DB는 최초 1회만 조회
+          ↓
+      응답 (40ms)
+</code></pre>
+
+<p>```</p>
+
+<p>| 구분       | 개선 전  | 개선 후                |   |
+| -------- | ----- | ------------------- | - |
+| 평균 응답 시간 | 200ms | <strong>40ms</strong>            |   |
+| DB 요청 수  | 100%  | <strong>60% 감소</strong>          |   |
+| 서버 비용    | -     | <strong>scale-out 없이 유지</strong> |   |</p>
+
+<hr />
+
+<h2>✅ 개선 2: 비동기 이벤트 큐 구조 개선</h2>
+
+<h3>🔍 문제 상황</h3>
+
+<ul>
+<li>던전 입장/보상/우편/업적 <em>이벤트가</em> 동기식으로 처리</li>
+<li>하나의 처리 지점에서 병목 발생, 스트레스 테스트 진행시 TPS 급감</li>
+</ul>
+
+<h3>⚙️ 개선 조치</h3>
+
+<ul>
+<li>던전 로직 DB 쓰기 작업을 메인 응답 이후 <strong>비동기 Job Queue</strong>로 이관</li>
+<li>유저는 빠르게 응답 수신, 후속 처리는 서버에서 백그라운드 처리</li>
+</ul>
+
+<h3>📊 구조 시각화</h3>
+
+<p><code>
+     ▶ 던전 클리어 요청
+            ↓
+       [메인 서버]
+       - 결과 응답 즉시 반환
+       - Job Queue에 이벤트 등록
+            ↓
+     [이벤트 워커]
+       - DB 보상 처리
+       - 랭킹/업적 업데이트
+</code></p>
+
+<h3>💡 성과</h3>
+
+<ul>
+<li>컨텐츠별 이벤트 처리 TPS <strong>1.6배 증가</strong></li>
+<li>유저 체감 응답 속도 개선 및 클라이언트 타임아웃 이슈 해소</li>
+</ul>
+
+<hr />
+
+<p>📎 <a href="https://true-bear.github.io">경력 기술서로 돌아가기</a></p>
+
+</body>
+</html>
