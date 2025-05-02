@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>문진웅 | 서버 개발자 경력 기술서</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>문진웅 | 서버 개발자 경력 기술서</title>
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
     body {
       font-family: 'Inter', 'Apple SD Gothic Neo', sans-serif;
@@ -56,68 +57,49 @@
 </head>
 <body>
 <h1>문진웅 (Moon Jinwoong)</h1>
-
 <p><strong>서버 개발자</strong> | 경력 5년 8개월📞 +82-10-5120-2097📧 <a href="mailto:jazzmaster0415@gmail.com">jazzmaster0415@gmail.com</a>🔗 <a href="https://github.com">GitHub</a></p>
-
-<hr />
-
+<hr/>
 <h2>🔧 기술 스택</h2>
-
 <ul>
 <li><strong>Language</strong>: C++, Golang, solidity, php</li>
 <li><strong>DB</strong>: MySQL, Redis, MongoDB</li>
 <li><strong>OS</strong>: Linux</li>
 <li><strong>Etc</strong>: git, confluence, jira, boost, gin, etc...</li>
 </ul>
-
-<hr />
-
+<hr/>
 <h2>💼 주요 프로젝트 및 경험</h2>
-
 <h3>(주) 트랄라랩 | 블록체인 서버 개발자 (2023.05 ~ 2025.02)</h3>
-
 <h4>🔹 서버 프레임워크 및 공용 라이브러리 구축</h4>
-
 <ul>
 <li>handler/usecase/repository/router 구조로 서버 아키텍처 설계 → 유지보수성과 확장성 확보</li>
 <li>서버 증설 시 공용 프로토콜/유틸 라이브러리를 활용해 코드 중복 제거, 약 30% 개발 공수 단축</li>
 <li>다양한 서버 유형(API 서버, 크롤러, 배치 서버)을 모듈 기반으로 신속히 생성 가능</li>
 </ul>
-
 <p>🔹 스마트 컨트랙트 구현</p>
-
 <ul>
 <li>토큰 컨트랙트 구현 및 배포 및 상장</li>
 <li>UUPS를 이용해 OG-NFT 컨트랙트 구현 및 배포</li>
 <li>airdrop 컨트랙트 배포하여 다중 트랜잭션 일괄처리로 자동화 및 수수료 최소화 기능 적용</li>
 </ul>
-
 <h4>🔹 코드 및 데이터 최적화</h4>
-
 <ul>
 <li>쿼리 성능 향상을 위한 복합 인덱스 설계 및 projection 활용</li>
 <li>Redis 캐시 도입으로 세션 처리 및 반복 조회 로직 최적화</li>
 <li>불필요한 포인터/복사 제거, 컨테이너 교체로 성능 및 메모리 안정성 확보</li>
 </ul>
-
 <h4>🔹 블록체인 기반 플랫폼 설계 및 게임 연동</h4>
-
 <ul>
 <li>Ethereum(L1), zkSync(L2) 연동 API 서버 구축: NFT/토큰 정보 조회 및 Tx 처리</li>
 <li>고루틴 기반 크롤러 서버로 Tx 완료 여부 확인 및 게임 리소스 연동 처리 (완료 Tx → 재화 지급 등)</li>
 <li>비동기 배치 서버를 통한 트랜잭션 모음/재시도/nonce 충돌 방지 로직 설계</li>
 </ul>
-
 <h4>🔹 게임 및 인증 API 서버 구축</h4>
-
 <ul>
 <li>OAuth(구글/애플) 로그인, JWT 발급 및 세션 갱신 API 구현</li>
 <li>인게임 기능: 탕후루 미니게임, 복권 기능, 인벤토리, 랭킹, 업적, 퀘스트 서버 구현</li>
 <li>서버 상태 기반 토큰 재발급, 업적 조건 자동 달성, 주간/월간 랭킹 보상 지급 기능 등 포함</li>
 </ul>
-
 <h4>🔹 상세 경력 기술 이력</h4>
-
 <ul>
 <li>크롤러 서버는 goroutine 기반으로 구현하여 체인 블록을 주기적으로 긁고, 트랜잭션 상태를 파악해 DB 업데이트</li>
 <li>체인 데이터는 IPFS와 연동되어 있으며, 콘텐츠(예: NFT 이미지, 메타데이터)는 미리 가공 및 저장</li>
@@ -126,13 +108,9 @@
 <li>대시보드 및 운영툴 API도 모듈화하여, 관리자 전용 기능(아이템 지급, Tx 모니터링 등)을 라우팅 기반으로 처리</li>
 <li>대부분의 서버는 공통 유틸과 인터페이스 기반으로 작성되어 신규 기능 추가 시 소스 코드 파편화 없이 통합 가능</li>
 </ul>
-
-<hr />
-
+<hr/>
 <h3>(주) 네오플 | 모바일 던전앤파이터 서버 개발 (2020.02 ~ 2022.01)</h3>
-
 <h4>🔹 pvp 컨텐츠</h4>
-
 <ul>
 <li>2vs2 주점난투 : 등급전, 일반전 메인 화면 및 점수 정산 기능 구현</li>
 <li>3vs3 대장전 : 태그매치 방식의 pvp 컨텐츠 구현</li>
@@ -140,47 +118,35 @@
 <li>몽환의 미궁</li>
 <li>파티 시스템(던전/레이드) 갱신, 참여, 탈퇴 등 동기화 처리</li>
 </ul>
-
 <p><strong>🔹 던전 컨텐츠 및 레이드</strong></p>
-
 <ul>
 <li>몽환의 미궁 : 스테이지 별 보스 잡는 컨텐츠 기능 구현(보상 및 메인화면)</li>
 <li>로터스 레이드 : 메인화면 및 레이드 enter , clear , reward 구현</li>
 <li>던전 슬롯 기능 : 늘어나는 던전들을 추가해주고 클리어한 던전인지 아닌지에 대한 데이터 관리하는 기능</li>
 <li>미망의 탑 구현 : 스테이지 별로 세팅 되는 데이터 clear시 정산 기능 구현</li>
 </ul>
-
 <h4>🔹 퀘스트 및 업적 시스템 리팩토링</h4>
-
 <ul>
 <li>복잡한 퀘스트 구조를 테이블 및 코드 레벨에서 단순화하여 마이그레이션</li>
 <li>신규 업적 시스템 설계 및 모험도감 기능 구현</li>
 </ul>
-
 <p><strong>🔹 기타 시스템</strong></p>
-
 <ul>
 <li>랭킹 우편 시스템</li>
 <li>캐릭터 버프 : 테이블과 유저 데이터 가져와서 버프를 내려주는 시스템</li>
 <li>만렙 확장 컨텐츠 작업: 수치 변경 및 기획자와의 테이블 대응, 인벤토리 증가 등 여러 기능 구현</li>
 <li>미성년자 차단 api 구현 : tencentAPI를 이용해 미성년자 접속 차단 기능 구현 및 인게임 유저들 kick 하는 기능 구현</li>
 </ul>
-
 <h4>🔹 GM 툴 및 스트레스 테스트 시스템</h4>
-
 <ul>
 <li>GM 치트 기능: pvp 승패 기능, 던전 클리어 기능, 캐릭터 생성 기능, 퀘스트 업데이트 추가 삭제 기능 등등</li>
 <li>스트레스 테스트(PR2 10만 동시접속 기준)시 나오는 부하들 기능 개선</li>
 <li>DB 분산 기존 로직 개편</li>
 <li>autoPerf 오픈소스 기반 SVG 시각화 분석 적용</li>
 </ul>
-
-<hr />
-
+<hr/>
 <h3>(주) 컴투스 | 컴투스 프로야구 서버 개발 (2018.05 ~ 2020.02)</h3>
-
 <h4>🔹 컨텐츠 서버 개발</h4>
-
 <ul>
 <li>카드 조합 : 여러 카드를 조합하여 새로운 카드나 아이템을 생성하는 기능</li>
 <li>선수 뽑기 : 무작위로 선수카드나 아이템을 획득하는 기능</li>
@@ -192,27 +158,18 @@
 <li>승부 예측, 출석 체크 등 매월 발생하는 이벤트 시스템 구현</li>
 <li>전설 카드 : 게임 내 최고 등급의 카드 뽑는 시스템 구현</li>
 </ul>
-
 <h4>🔹 데이터 기반 최적화 및 로그 시스템 정비</h4>
-
 <ul>
 <li>Redis 기반 랭킹 처리 및 MySQL+BigQuery 활용 데이터 분석</li>
 <li>이벤트/컨텐츠/에러 로그 정비 및 구분화 → 유지보수성과 운영 효율성 개선</li>
 </ul>
-
-<hr />
-
-<h2>🎓 학력</h2>
-
+<hr/>
+<p><a href="https://true-bear.github.io/optimizm.html">게임 서버 성능 개선 사례 보기</a></p><h2>🔗 관련 문서</h2><h2>🎓 학력</h2>
 <ul>
 <li><strong>한국산업기술대학교 게임공학부</strong> (2014.03 ~ 2018.02)</li>
 </ul>
-
-<hr />
-
+<hr/>
 <h2>🏷️ 스킬 태그</h2>
-
 <p><code>C++</code> <code>Golang</code> <code>PHP</code> <code>MySQL</code> <code>Redis</code> <code>MongoDB</code> <code>Linux</code> <code>Git</code> <code>Blockchain</code> <code>Multithreading</code> <code>API</code> <code>게임 서버</code> <code>성능 최적화</code> <code>OAuth</code> <code>Tx Processing</code> <code>스트레스 테스트</code> <code>컨텐츠 개발</code></p>
-
 </body>
 </html>
